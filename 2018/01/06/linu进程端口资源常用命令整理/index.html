@@ -121,7 +121,7 @@
 
 
 
-  <title>ceshier | 悦夏</title>
+  <title>linu进程端口资源常用命令整理 | 悦夏</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/05/ceshier/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/06/linu进程端口资源常用命令整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chun Li">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ceshier</h1>
+          <h1 class="post-title" itemprop="name headline">linu进程端口资源常用命令整理</h1>
         
 
         <div class="post-meta">
@@ -281,7 +281,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T10:26:02+08:00">2018-01-05</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T09:58:41+08:00">2018-01-06</time>
             
 
             
@@ -317,7 +317,17 @@
       
 
       
-        
+        <h1 id="进程常用命令"><a href="#进程常用命令" class="headerlink" title="进程常用命令"></a>进程常用命令</h1><h2 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h2><p>ps  查看所有进程 常用参数 ps aux  ，ps -le<br>-a 显示一个终端的所有进程，除了会话引线<br>-u 显示进程的归属用户和内存适用情况<br>-x 显示没有控制终端的进程<br>-l 显示更加详细的信息<br>-e 显示所有进程<br><a id="more"></a><br>结果字段意思<br>USER  所属用户<br>PID  进程的唯一id<br>%CPU  消耗cpu的百分比<br>%MEM  消耗内存的百分比<br>STAT  进程状态 START  运行开始时间<br>TIME   占用cpu总时间  执行的命令<br>VSZ(占用的虚拟内存)    单位都是kb<br>RSS（占用的真是内存）  单位都是kb<br>TTY，该进程是在那个终端中运行的。TTY1-TTY7是本地终端，TTY1-TTY6是字符界面终端，TTY7是图形界面终端，TTY/0-255是远程终端</p>
+<p>常用 ps -ef | grep 程序名 </p>
+<p>选项含义如下：<br>ps:将某个进程显示出来<br>-A 　显示所有程序。<br>-e 　此参数的效果和指定”A”参数相同。<br>-f 　显示UID,PPIP,C与STIME栏位。<br>grep命令是查找<br>中间的|是管道命令 是指ps命令与grep同时执行</p>
+<p>字段含义如下<br>UID PID PPID C STIME TTY TIME CMD<br>各相关信息的意义：<br>UID 程序被该 UID 所拥有<br>PPID 则是其上级父程序的ID<br>C CPU 使用的资源百分比<br>STIME 系统启动时间</p>
+<h2 id="查看进程树"><a href="#查看进程树" class="headerlink" title="查看进程树"></a>查看进程树</h2><p>pstree  显示进程树，以父子进程的关系显示，查看统一个服务有启动了几个进程特别方便<br>-u 显示所属用户<br>-p 显示pid</p>
+<h2 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h2><p>杀死一个进程 kill -9 pid<br>杀死一组进程 killall 进程名 </p>
+<h1 id="端口查看命令"><a href="#端口查看命令" class="headerlink" title="端口查看命令"></a>端口查看命令</h1><h2 id="netstat-查看端口是否开放"><a href="#netstat-查看端口是否开放" class="headerlink" title="netstat   查看端口是否开放"></a>netstat   查看端口是否开放</h2><p>-a (all)显示所有选项，默认不显示LISTEN相关<br>-t (tcp)仅显示tcp相关选项<br>-u (udp)仅显示udp相关选项<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-l 仅列出有在 Listen (监听) 的服務状态<br>-p 显示建立相关链接的程序名<br>-r 显示路由信息，路由表<br>-e 显示扩展信息，例如uid等<br>-s 按各个协议进行统计<br>-c 每隔一个固定时间，执行该netstat命</p>
+<h2 id="telnet-探测端口是否可以访问到"><a href="#telnet-探测端口是否可以访问到" class="headerlink" title="telnet 探测端口是否可以访问到"></a>telnet 探测端口是否可以访问到</h2><p>telnet  ip port</p>
+<h1 id="查看系统资源"><a href="#查看系统资源" class="headerlink" title="查看系统资源"></a>查看系统资源</h1><h2 id="查看内存适用情况"><a href="#查看内存适用情况" class="headerlink" title="查看内存适用情况"></a>查看内存适用情况</h2><p>free -[b|k|m|g] </p>
+<h2 id="查看硬盘使用情况"><a href="#查看硬盘使用情况" class="headerlink" title="查看硬盘使用情况"></a>查看硬盘使用情况</h2><p>df -[b|k|m] </p>
+
       
     </div>
     
@@ -341,8 +351,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/05/测试新增页面/" rel="next" title="测试新增页面">
-                <i class="fa fa-chevron-left"></i> 测试新增页面
+              <a href="/2018/01/04/linux操作文件/" rel="next" title="linux操作文件">
+                <i class="fa fa-chevron-left"></i> linux操作文件
               </a>
             
           </div>
@@ -350,6 +360,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/08/初学gradle项目/" rel="prev" title="初学用gradle搭建springbo项目">
+                初学用gradle搭建springbo项目 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -401,8 +415,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -453,6 +476,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程常用命令"><span class="nav-number">1.</span> <span class="nav-text">进程常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看进程"><span class="nav-number">1.1.</span> <span class="nav-text">查看进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看进程树"><span class="nav-number">1.2.</span> <span class="nav-text">查看进程树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杀死进程"><span class="nav-number">1.3.</span> <span class="nav-text">杀死进程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#端口查看命令"><span class="nav-number">2.</span> <span class="nav-text">端口查看命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#netstat-查看端口是否开放"><span class="nav-number">2.1.</span> <span class="nav-text">netstat   查看端口是否开放</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#telnet-探测端口是否可以访问到"><span class="nav-number">2.2.</span> <span class="nav-text">telnet 探测端口是否可以访问到</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看系统资源"><span class="nav-number">3.</span> <span class="nav-text">查看系统资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看内存适用情况"><span class="nav-number">3.1.</span> <span class="nav-text">查看内存适用情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看硬盘使用情况"><span class="nav-number">3.2.</span> <span class="nav-text">查看硬盘使用情况</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
