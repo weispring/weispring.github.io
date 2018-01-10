@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[task学习]]></title>
+    <url>%2F2018%2F01%2F10%2FgradleTask%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[java代码写在脚本中gradle构建脚本本可以写java代码，groove语言支持java代码 java 类定义 1234567891011121314151617181920212223242526public class VersionEntity &#123; private Integer major; private Integer minor; private boolean release; @Override public String toString() &#123; return &quot;VersionEntity [major=&quot; + major + &quot;, minor=&quot; + minor + &quot;, release=&quot; + release + &quot;]&quot;; &#125; public VersionEntity(Integer major, Integer minor, boolean release) &#123; super(); this.major = major; this.minor = minor; this.release = release; &#125; public VersionEntity() &#123; super(); this.major = 2121; &#125; &#125; 定义属性文件ext.f = file(“version.properties”); java 方法定义 123456789VersionEntity GenerateVersion() throws FileNotFoundException, IOException&#123; Properties properties = new Properties(); properties.load(new FileInputStream(f)); return new VersionEntity(Integer.valueOf(properties.get(&quot;major&quot;).toString()),Integer.valueOf(properties.get(&quot;minor&quot;).toString()), properties.getProperty(&quot;release&quot;).toString().equals(&quot;false&quot;));&#125; 调用project的task方法创建继承于defaultTask的task 1234567891011121314151617task ver &#123; /*直接调用java方法*/ project.version = GenerateVersion() version.release = true /*配置代码块中定义 输入 输出，定义的task便能执行增量式构建*/ inputs.property(&apos;release&apos;,version.release) outputs.file f doLast &#123; println project.version ant.propertyfile(file: f)&#123; /*修改属性文件中的值*/ entry(key: &apos;release&apos;,type: &apos;string&apos;,operation: &apos;=&apos;,value: &apos;true&apos;) println &apos;ver执行&apos; &#125; println project.version &#125; &#125; 自定义task类自定义task 类 也可以在java代码中定义，不过需要导入相应的包，此处gradle已经提供 12345678910111213141516171819202122class myDefaultTask extends DefaultTask &#123; /* 使用注解标识 输入 输出*/ @Input String pi @OutputDirectory po myDefaultTask ()&#123; group = &apos;定义task&apos; description = &apos;定义task,封装实现，只提供输入输出&apos; &#125; /*定义动作*/ @TaskAction void start() &#123; /*这里定义逻辑*/ println &apos;输入的是：&apos;+pi &#125;&#125; 测试增量式构建 1234567task ceShiMyDefaultTask(type: myDefaultTask)&#123; /*输入输出不变时，不在执行task*/ pi = &apos;hahhh--900&apos; po= file(&quot;/lib&quot;) doLast &#123;println &apos;ceShiMyDefaultTask&apos;&#125; &#125; 文件复制，可以参考api中Copy类这种文件复制 类似于 调用方法 123456789 task ccc()&#123; doLast&#123; copy() &#123; /* from into 都是copy对象的方法*/ from &quot;lib&quot; into &quot;test&quot; &#125; &#125;&#125; 这种文件复制 类似于继承 输入输出定义在父类中 此task执行一次就不会执行了123456789101112task hhh(type: Copy)&#123; inputs.property(&apos;release&apos;,11) outputs.dir file(&quot;111&quot;) doLast &#123; println &apos;-----------------------00000&apos; &#125; from &quot;111&quot; into &quot;2222&quot; include &quot;111.png&quot;&#125; task规则简单task只需project的task即可以添加，但是task规则只能通过taskContainer容器的addRule(String,Closure)方法 12345678910111213141516171819tasks.addRule(&apos;Pattern: Test&lt;Classifier&gt;My: 测试task规则.&apos;)&#123; String taskName -&gt; if (taskName.startsWith(&apos;Test&apos;) &amp;&amp; taskName.endsWith(&apos;My&apos;))&#123; task (taskName) &#123; doLast&#123; String classifier = taskName - &apos;Test&apos; - &apos;My&apos; switch(classifier)&#123; case &apos;1&apos; : println &apos;任务---1&apos; break case &apos;2&apos; : println &apos;任务---2&apos; break default: println &apos;任务000&apos; &#125; &#125; &#125; &#125;&#125; 编写生命周期钩子，类似于监听，事件是任务蓝图创建完成后12345678910 gradle.taskGraph.whenReady &#123;taskGraph -&gt; /*包含不一定执行动作，一定执行配置，因为有可能是最新的，*/ if(taskGraph.hasTask(&apos;:addTask&apos;)) &#123; println &apos; 存在的逻辑&apos; &#125; else &#123; println &apos; 不存在的逻辑&apos; &#125; &#125; 不依赖依赖的task，控制执行顺序1 finalizedBy就是在task执行完之后要执行的task。 2 mustRunAfter并不会添加依赖，它只是告诉Gradle执行的优先级如果两个task同时存在 总结 重点把握对生命周期、执行顺序的认识 借助gradle插件库查看源码，进行学习]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>gradle</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[错误集]]></title>
+    <url>%2F2018%2F01%2F10%2F%E9%94%99%E8%AF%AF%E9%9B%86%2F</url>
+    <content type="text"><![CDATA[常见错误处理解决The hierarchy of the type is inconsistent错误 可能的原因：自己的类继承于某个类，这个类或者这个类继承的类或者再往上继承的某个类所在的jar包没有被引入。]]></content>
+      <categories>
+        <category>随记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[初学Gradle Task]]></title>
+    <url>%2F2018%2F01%2F09%2Fgradle-Task%2F</url>
+    <content type="text"><![CDATA[脚本默认taskBuild Setup tasksinit - Initializes a new Gradle build. [incubating]wrapper - Generates Gradle wrapper files. [incubating] Help tasksbuildEnvironment - Displays all buildscript dependencies declared in root project ‘learn’.components - Displays the components produced by root project ‘learn’. [incubating]dependencies - Displays all dependencies declared in root project ‘learn’.dependencyInsight - Displays the insight into a specific dependency in root project ‘learn’.dependentComponents - Displays the dependent components of components in root project ‘learn’. [incubating]help - Displays a help message.model - Displays the configuration model of root project ‘learn’. [incubating]projects - Displays the sub-projects of root project ‘learn’.properties - Displays the properties of root project ‘learn’.tasks - Displays the tasks runnable from root project ‘learn’. java 插件taskBuild tasksassemble - Assembles the outputs of this project. [jar]build - Assembles and tests this project. [assemble, check]buildDependents - Assembles and tests this project and all projects that depend on it. [build]buildNeeded - Assembles and tests this project and all projects it depends on. [build]classes - Assembles main classes. compileJava - Compiles main Java source. processResources - Processes main resources.clean - Deletes the build directory.jar - Assembles a jar archive containing the main classes. [classes]testClasses - Assembles test classes. [classes] compileTestJava - Compiles test Java source. processTestResources - Processes test resources. Documentation tasksjavadoc - Generates Javadoc API documentation for the main source code. [classes] Verification taskscheck - Runs all checks. [test]test - Runs the unit tests. [classes, testClasses] RulesPattern: clean: Cleans the output files of a task.Pattern: build: Assembles the artifacts of a configuration.Pattern: upload: Assembles and uploads the artifacts belonging to a configuration. springboot插件taskApplication tasksbootRun - Run the project with support for auto-detecting main class and reloading static resources [classes] findMainClassrun - Runs this project as a JVM application [classes] findMainClass Build tasksassemble - Assembles the outputs of this project. [bootRepackage, distTar, distZip, jar]bootRepackage - Repackage existing JAR and WAR archives so that they can be executed from the command line using ‘java -jar’ [distTar, distZip, jar] Distribution tasksassembleDist - Assembles the main distributions [distTar, distZip]distTar - Bundles the project as a distribution. [jar] findMainClass startScripts - Creates OS specific scripts to run the project as a JVM application.distZip - Bundles the project as a distribution. [jar] findMainClass startScripts - Creates OS specific scripts to run the project as a JVM application.installDist - Installs the project as a distribution as-is. [jar] findMainClass startScripts - Creates OS specific scripts to run the project as a JVM application. eclipse插件taskIDE taskscleanEclipse - Cleans all Eclipse files. cleanEclipseClasspath cleanEclipseJdt cleanEclipseProjecteclipse - Generates all Eclipse files. eclipseClasspath - Generates the Eclipse classpath file. eclipseJdt - Generates the Eclipse JDT settings file. eclipseProject - Generates the Eclipse project file. 生命周期之间的执行顺序test - Runs the unit tests. [classes, testClasses]中括号是他的前一阶段，执行他就会先执行前面的task，依次类推，就会找到他的执行顺序。]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>gradle</tag>
+        <tag>task</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[初学用gradle搭建springboot项目]]></title>
+    <url>%2F2018%2F01%2F08%2F%E5%88%9D%E5%AD%A6gradle%E9%A1%B9%E7%9B%AE%2F</url>
+    <content type="text"><![CDATA[安装gradle插件安装完成后，在开发工具中新建一个gradle项目;项目位置 编辑配置文件build.gradle作用相当于maven的pom123456789101112131415161718192021222324252627282930313233343536373839404142434445/*依赖的插件*/apply plugin: &apos;java&apos;apply plugin: &apos;eclipse&apos;apply plugin: &apos;spring-boot&apos;/*jdk版本*/sourceCompatibility = 1.8/*打包配置*/version = &apos;1.0&apos;jar &#123; manifest &#123; attributes &apos;Implementation-Title&apos;: &apos;Gradle Quickstart&apos;, &apos;Implementation-Version&apos;: version &#125;&#125;/*第三方库来源*/repositories &#123; mavenCentral()&#125;/*gradle 自身需要的依赖放在这里面，插件 就需要放在这里面*/buildscript &#123; ext &#123; springBootVersion = &quot;1.2.3.RELEASE&quot;&#125; repositories &#123; jcenter() /*是一个插件仓库，导入的插件将会在仓库中寻找并下载*/ &#125; dependencies &#123; /*必须配置，不然没法用springboot插件，脚本自身用的依赖都放到这里*/ classpath(&quot;org.springframework.boot:spring-boot-gradle-plugin:$&#123;springBootVersion&#125;&quot;) &#125;&#125;/*声明依赖*/dependencies &#123;/*这里是项目需要的依赖，也是有依赖范围的*/ compile &apos;org.springframework.boot:spring-boot:1.5.4.RELEASE&apos; compile(&quot;org.springframework.boot:spring-boot-starter-web:1.5.4.RELEASE&quot;) compile &apos;org.springframework.boot:spring-boot-autoconfigure:1.5.4.RELEASE&apos;&#125; spring-boot-gradle-plugin插件的task 分别用于打包和启动 task讲解1234567891011121314151617181920212223242526/*自定义的task，后面自定义构建玩一下，相当于maven里面的插件goal*/task testtask &#123; println &apos;哈哈哈哈&apos; /*每个task都有着两个方法*/ doLast &#123; println &apos;last&apos;&#125; doFirst &#123; println &apos;first&apos;&#125;&#125;/*task之间的依赖*/task testtask1(dependsOn:testtask) &#123; println &apos;哈哈哈哈1&apos;&#125;/* 覆盖java插件内置的task*/clean &#123;println &apos;测试clean，覆盖默认&apos;&#125;/*为task加组别和描述*/task addTask(group:&apos;测试组&apos;,description:&apos;task的描述&apos;)&#123;&#125; 查看task 命令查看所有的taks gradle -q tasks 查看所有的taks，一缩进方式显示依赖 gradle -q tasks –all gradle 执行顺序1.初始化阶段，会去读取根工程中setting.gradle中的include信息，决定有哪几个工程加入构建， 创建project实例，比如下面有三个工程： include ‘:app’, ‘:lib1’, ‘:lib2 2.配置阶段，会去执行所有工程的build.gradle脚本，配置project对象，一个对象由多个任务组成， 此阶段也会去创建、配置task及相关信息。 3.运行阶段，根据gradle命令传递过来的task名称，执行相关依赖任务 gradle task 命令执行任何一个task或者后面没有task，此时执行默认task，都会经历1 2 步骤，最后才执行相应的task中的action]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>gradle</tag>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linu进程端口资源常用命令整理]]></title>
+    <url>%2F2018%2F01%2F06%2Flinu%E8%BF%9B%E7%A8%8B%E7%AB%AF%E5%8F%A3%E8%B5%84%E6%BA%90%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86%2F</url>
+    <content type="text"><![CDATA[进程常用命令查看进程ps 查看所有进程 常用参数 ps aux ，ps -le-a 显示一个终端的所有进程，除了会话引线-u 显示进程的归属用户和内存适用情况-x 显示没有控制终端的进程-l 显示更加详细的信息-e 显示所有进程结果字段意思USER 所属用户PID 进程的唯一id%CPU 消耗cpu的百分比%MEM 消耗内存的百分比STAT 进程状态 START 运行开始时间TIME 占用cpu总时间 执行的命令VSZ(占用的虚拟内存) 单位都是kbRSS（占用的真是内存） 单位都是kbTTY，该进程是在那个终端中运行的。TTY1-TTY7是本地终端，TTY1-TTY6是字符界面终端，TTY7是图形界面终端，TTY/0-255是远程终端 常用 ps -ef | grep 程序名 选项含义如下：ps:将某个进程显示出来-A 显示所有程序。-e 此参数的效果和指定”A”参数相同。-f 显示UID,PPIP,C与STIME栏位。grep命令是查找中间的|是管道命令 是指ps命令与grep同时执行 字段含义如下UID PID PPID C STIME TTY TIME CMD各相关信息的意义：UID 程序被该 UID 所拥有PPID 则是其上级父程序的IDC CPU 使用的资源百分比STIME 系统启动时间 查看进程树pstree 显示进程树，以父子进程的关系显示，查看统一个服务有启动了几个进程特别方便-u 显示所属用户-p 显示pid 杀死进程杀死一个进程 kill -9 pid杀死一组进程 killall 进程名 端口查看命令netstat 查看端口是否开放-a (all)显示所有选项，默认不显示LISTEN相关-t (tcp)仅显示tcp相关选项-u (udp)仅显示udp相关选项-n 拒绝显示别名，能显示数字的全部转化成数字。-l 仅列出有在 Listen (监听) 的服務状态-p 显示建立相关链接的程序名-r 显示路由信息，路由表-e 显示扩展信息，例如uid等-s 按各个协议进行统计-c 每隔一个固定时间，执行该netstat命 telnet 探测端口是否可以访问到telnet ip port 查看系统资源查看内存适用情况free -[b|k|m|g] 查看硬盘使用情况df -[b|k|m]]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[linux操作文件]]></title>
+    <url>%2F2018%2F01%2F04%2Flinux%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6%2F</url>
+    <content type="text"><![CDATA[编辑文件创建文件 vim 文件名编辑文件 vim 文件名编辑文件，输入 i 切换到插入模式保存文件 按esc切换到命令模式:wq 保存并退出 #查看文件ls 查看文件列表 （ll 就是 ls -l的别名）find 用来查找文件 删除文件夹rm -rf /var/log/httpd/access将会删除/var/log/httpd/access目录以及其下所有文件、文件夹 删除文件rm -f /var/log/httpd/access.log将会强制删除/var/log/httpd/access.log这个文件 复制文件[root@localhost share]# mkdir /usr/java/ // 在/usr目录下新建一个java目录[root@localhost share]# cp jdk-6u45-linux-i586.bin /usr/java/ // 将JDK文件复制 解压文件tar 命令-c: 建立压缩档案-x：解压-t：查看内容-r：向压缩归档文件末尾追加文件-u：更新原压缩包中的文件 这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。 -z：有gzip属性的-j：有bz2属性的-Z：有compress属性的-v：显示所有过程-O：将文件解开到标准输出 下面的参数-f是必须的 -f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。 总结linux操作文件next主题的相关设置]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo初体验]]></title>
+    <url>%2F2018%2F01%2F04%2Fhexo%E5%88%9D%E4%BD%93%E9%AA%8C%2F</url>
+    <content type="text"><![CDATA[要注意的问题，:后面需要一个空格端口占用情况markDown语法 文件修改后，执行下面两个命令相当于刷新$ hexo clean$ hexo s -g 链接示例 第二部分1234代码示例public static String getName() &#123; System.out.println(&quot;代码符号在左上角esc键下面！！！&quot;)&#125; 引用 狂人日记 粗体 无序列表 无序列表项1 无序列表项2 无序列表项3 有序列表写法：1.有序列表项12.有序列表项23.有序列表项3 测试a标签 红色测试 表格 表头1 表头2 表头3 表头4 默认左对齐 左对齐 居中对其 右对齐 默认左对齐 左对齐 居中对其 右对齐 默认左对齐 左对齐 居中对其 右对齐 og bird cat foo foo foo bar bar bar baz baz baz 产品 价格 Leanote 高级账号 60元/年 Leanote 超级账号 120元/年]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+</search>

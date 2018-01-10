@@ -124,7 +124,7 @@
 
 
 
-  <title>hexo初体验 | 悦夏</title>
+  <title>初学Gradle Task | 悦夏</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/hexo初体验/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/09/gradle-Task/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chun Li">
@@ -314,7 +314,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo初体验</h1>
+          <h1 class="post-title" itemprop="name headline">初学Gradle Task</h1>
         
 
         <div class="post-meta">
@@ -327,7 +327,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T10:48:53+08:00">2018-01-04</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-09T09:58:41+08:00">2018-01-09</time>
             
 
             
@@ -379,7 +379,7 @@
                 
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
-                <span title="字数统计"> 222 字</span>
+                <span title="字数统计"> 500 字</span>
               
 
               
@@ -393,7 +393,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">  1 分钟</span>
+                <span title="阅读时长">  3 分钟</span>
               
             </div>
           
@@ -413,104 +413,17 @@
       
 
       
-        <p>要注意的问题，:后面需要一个空格<br>端口占用情况<br>markDown语法<br><a id="more"></a></p>
-<p>文件修改后，执行下面两个命令相当于刷新<br>$ hexo clean<br>$ hexo s -g</p>
-<p><img src="/images/01.jpg" alt="图片示例"></p>
-<p><a href="http://www.baidu.com" target="_blank" rel="noopener">链接示例</a></p>
-<h1 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">代码示例</span><br><span class="line">public static String getName() &#123;</span><br><span class="line">    System.out.println(&quot;代码符号在左上角esc键下面！！！&quot;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>引用 狂人日记</p>
-</blockquote>
-<p><strong>粗体</strong></p>
-<p>无序列表</p>
-<ul>
-<li>无序列表项1</li>
-</ul>
-<ul>
-<li>无序列表项2</li>
-</ul>
-<ul>
-<li>无序列表项3</li>
-</ul>
-<p>有序列表<br>写法：<br>1.有序列表项1<br>2.有序列表项2<br>3.有序列表项3</p>
-<p><a href="www.baidu.com" color="blue">测试a标签</a></p>
-<font color="red" bgcolor="blue">红色测试</font>
-
-<p>表格</p>
-<table>
-<thead>
-<tr>
-<th>表头1</th>
-<th style="text-align:left">表头2</th>
-<th style="text-align:center">表头3</th>
-<th style="text-align:right">表头4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-<tr>
-<td>默认左对齐</td>
-<td style="text-align:left">左对齐</td>
-<td style="text-align:center">居中对其</td>
-<td style="text-align:right">右对齐</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>og</th>
-<th>bird</th>
-<th>cat</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>foo</td>
-<td>foo</td>
-<td>foo</td>
-</tr>
-<tr>
-<td>bar</td>
-<td>bar</td>
-<td>bar</td>
-</tr>
-<tr>
-<td>baz</td>
-<td>baz</td>
-<td>baz</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>产品</th>
-<th style="text-align:right">价格</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Leanote 高级账号</td>
-<td style="text-align:right">60元/年</td>
-</tr>
-<tr>
-<td>Leanote 超级账号</td>
-<td style="text-align:right">120元/年</td>
-</tr>
-</tbody>
-</table>
+        <h1 id="脚本默认task"><a href="#脚本默认task" class="headerlink" title="脚本默认task"></a>脚本默认task</h1><h2 id="Build-Setup-tasks"><a href="#Build-Setup-tasks" class="headerlink" title="Build Setup tasks"></a>Build Setup tasks</h2><p>init - Initializes a new Gradle build. [incubating]<br>wrapper - Generates Gradle wrapper files. [incubating]<br><a id="more"></a></p>
+<h2 id="Help-tasks"><a href="#Help-tasks" class="headerlink" title="Help tasks"></a>Help tasks</h2><p>buildEnvironment - Displays all buildscript dependencies declared in root project ‘learn’.<br>components - Displays the components produced by root project ‘learn’. [incubating]<br>dependencies - Displays all dependencies declared in root project ‘learn’.<br>dependencyInsight - Displays the insight into a specific dependency in root project ‘learn’.<br>dependentComponents - Displays the dependent components of components in root project ‘learn’. [incubating]<br>help - Displays a help message.<br>model - Displays the configuration model of root project ‘learn’. [incubating]<br>projects - Displays the sub-projects of root project ‘learn’.<br>properties - Displays the properties of root project ‘learn’.<br>tasks - Displays the tasks runnable from root project ‘learn’.</p>
+<h1 id="java-插件task"><a href="#java-插件task" class="headerlink" title="java 插件task"></a>java 插件task</h1><h2 id="Build-tasks"><a href="#Build-tasks" class="headerlink" title="Build tasks"></a>Build tasks</h2><p>assemble - Assembles the outputs of this project. [jar]<br>build - Assembles and tests this project. [assemble, check]<br>buildDependents - Assembles and tests this project and all projects that depend on it. [build]<br>buildNeeded - Assembles and tests this project and all projects it depends on. [build]<br>classes - Assembles main classes.<br>    compileJava - Compiles main Java source.<br>    processResources - Processes main resources.<br>clean - Deletes the build directory.<br>jar - Assembles a jar archive containing the main classes. [classes]<br>testClasses - Assembles test classes. [classes]<br>    compileTestJava - Compiles test Java source.<br>    processTestResources - Processes test resources.</p>
+<h2 id="Documentation-tasks"><a href="#Documentation-tasks" class="headerlink" title="Documentation tasks"></a>Documentation tasks</h2><p>javadoc - Generates Javadoc API documentation for the main source code. [classes]</p>
+<h2 id="Verification-tasks"><a href="#Verification-tasks" class="headerlink" title="Verification tasks"></a>Verification tasks</h2><p>check - Runs all checks. [test]<br>test - Runs the unit tests. [classes, testClasses]</p>
+<h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><p>Pattern: clean<taskname>: Cleans the output files of a task.<br>Pattern: build<configurationname>: Assembles the artifacts of a configuration.<br>Pattern: upload<configurationname>: Assembles and uploads the artifacts belonging to a configuration.</configurationname></configurationname></taskname></p>
+<h1 id="springboot插件task"><a href="#springboot插件task" class="headerlink" title="springboot插件task"></a>springboot插件task</h1><h2 id="Application-tasks"><a href="#Application-tasks" class="headerlink" title="Application tasks"></a>Application tasks</h2><p>bootRun - Run the project with support for auto-detecting main class and reloading static resources [classes]<br>    findMainClass<br>run - Runs this project as a JVM application [classes]<br>    findMainClass</p>
+<h2 id="Build-tasks-1"><a href="#Build-tasks-1" class="headerlink" title="Build tasks"></a>Build tasks</h2><p>assemble - Assembles the outputs of this project. [bootRepackage, distTar, distZip, jar]<br>bootRepackage - Repackage existing JAR and WAR archives so that they can be executed from the command line using ‘java -jar’ [distTar, distZip, jar]</p>
+<h2 id="Distribution-tasks"><a href="#Distribution-tasks" class="headerlink" title="Distribution tasks"></a>Distribution tasks</h2><p>assembleDist - Assembles the main distributions [distTar, distZip]<br>distTar - Bundles the project as a distribution. [jar]<br>    findMainClass<br>    startScripts - Creates OS specific scripts to run the project as a JVM application.<br>distZip - Bundles the project as a distribution. [jar]<br>    findMainClass<br>    startScripts - Creates OS specific scripts to run the project as a JVM application.<br>installDist - Installs the project as a distribution as-is. [jar]<br>    findMainClass<br>    startScripts - Creates OS specific scripts to run the project as a JVM application.</p>
+<h1 id="eclipse插件task"><a href="#eclipse插件task" class="headerlink" title="eclipse插件task"></a>eclipse插件task</h1><h2 id="IDE-tasks"><a href="#IDE-tasks" class="headerlink" title="IDE tasks"></a>IDE tasks</h2><p>cleanEclipse - Cleans all Eclipse files.<br>    cleanEclipseClasspath<br>    cleanEclipseJdt<br>    cleanEclipseProject<br>eclipse - Generates all Eclipse files.<br>    eclipseClasspath - Generates the Eclipse classpath file.<br>    eclipseJdt - Generates the Eclipse JDT settings file.<br>    eclipseProject - Generates the Eclipse project file.    </p>
+<h1 id="生命周期之间的执行顺序"><a href="#生命周期之间的执行顺序" class="headerlink" title="生命周期之间的执行顺序"></a>生命周期之间的执行顺序</h1><p>test - Runs the unit tests. [classes, testClasses]<br>中括号是他的前一阶段，执行他就会先执行前面的task，依次类推，就会找到他的执行顺序。</p>
 
       
     </div>
@@ -528,7 +441,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/gradle/" rel="tag"># gradle</a>
+          
+            <a href="/tags/task/" rel="tag"># task</a>
           
         </div>
       
@@ -541,14 +456,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/01/08/初学gradle项目/" rel="next" title="初学用gradle搭建springboot项目">
+                <i class="fa fa-chevron-left"></i> 初学用gradle搭建springboot项目
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/04/linux操作文件/" rel="prev" title="linux操作文件">
-                linux操作文件 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/10/错误集/" rel="prev" title="错误集">
+                错误集 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -717,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第二部分"><span class="nav-number">1.</span> <span class="nav-text">第二部分</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#脚本默认task"><span class="nav-number">1.</span> <span class="nav-text">脚本默认task</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-Setup-tasks"><span class="nav-number">1.1.</span> <span class="nav-text">Build Setup tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Help-tasks"><span class="nav-number">1.2.</span> <span class="nav-text">Help tasks</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-插件task"><span class="nav-number">2.</span> <span class="nav-text">java 插件task</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-tasks"><span class="nav-number">2.1.</span> <span class="nav-text">Build tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Documentation-tasks"><span class="nav-number">2.2.</span> <span class="nav-text">Documentation tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verification-tasks"><span class="nav-number">2.3.</span> <span class="nav-text">Verification tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rules"><span class="nav-number">2.4.</span> <span class="nav-text">Rules</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#springboot插件task"><span class="nav-number">3.</span> <span class="nav-text">springboot插件task</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-tasks"><span class="nav-number">3.1.</span> <span class="nav-text">Application tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-tasks-1"><span class="nav-number">3.2.</span> <span class="nav-text">Build tasks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distribution-tasks"><span class="nav-number">3.3.</span> <span class="nav-text">Distribution tasks</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#eclipse插件task"><span class="nav-number">4.</span> <span class="nav-text">eclipse插件task</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IDE-tasks"><span class="nav-number">4.1.</span> <span class="nav-text">IDE tasks</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生命周期之间的执行顺序"><span class="nav-number">5.</span> <span class="nav-text">生命周期之间的执行顺序</span></a></li></ol></div>
             
 
           </div>
