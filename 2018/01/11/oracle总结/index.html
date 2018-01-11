@@ -124,7 +124,7 @@
 
 
 
-  <title>linu进程端口资源常用命令整理 | 悦夏</title>
+  <title>oracle sql 总结 | 悦夏</title>
   
 
 
@@ -297,7 +297,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/06/linu进程端口资源常用命令整理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/oracle总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="李显春">
@@ -314,11 +314,15 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">linu进程端口资源常用命令整理</h1>
+          <h1 class="post-title" itemprop="name headline">oracle sql 总结</h1>
         
 
         <div class="post-meta">
 		
+            <i class="fa fa-thumb-tack"></i>
+            <font color=7D26CD>置顶</font>
+            <span class="post-meta-divider">|</span>
+          
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -327,7 +331,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T09:58:41+08:00">2018-01-06</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T22:47:28+08:00">2018-01-11</time>
             
 
             
@@ -379,7 +383,7 @@
                 
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
-                <span title="字数统计"> 621 字</span>
+                <span title="字数统计"> 1,143 字</span>
               
 
               
@@ -393,7 +397,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">  2 分钟</span>
+                <span title="阅读时长">  6 分钟</span>
               
             </div>
           
@@ -413,16 +417,52 @@
       
 
       
-        <h1 id="进程常用命令"><a href="#进程常用命令" class="headerlink" title="进程常用命令"></a>进程常用命令</h1><h2 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h2><p>ps  查看所有进程 常用参数 ps aux  ，ps -le<br>-a 显示一个终端的所有进程，除了会话引线<br>-u 显示进程的归属用户和内存适用情况<br>-x 显示没有控制终端的进程<br>-l 显示更加详细的信息<br>-e 显示所有进程<br><a id="more"></a><br>结果字段意思<br>USER  所属用户<br>PID  进程的唯一id<br>%CPU  消耗cpu的百分比<br>%MEM  消耗内存的百分比<br>STAT  进程状态 START  运行开始时间<br>TIME   占用cpu总时间  执行的命令<br>VSZ(占用的虚拟内存)    单位都是kb<br>RSS（占用的真是内存）  单位都是kb<br>TTY，该进程是在那个终端中运行的。TTY1-TTY7是本地终端，TTY1-TTY6是字符界面终端，TTY7是图形界面终端，TTY/0-255是远程终端</p>
-<p>常用 ps -ef | grep 程序名 </p>
-<p>选项含义如下：<br>ps:将某个进程显示出来<br>-A 　显示所有程序。<br>-e 　此参数的效果和指定”A”参数相同。<br>-f 　显示UID,PPIP,C与STIME栏位。<br>grep命令是查找<br>中间的|是管道命令 是指ps命令与grep同时执行</p>
-<p>字段含义如下<br>UID PID PPID C STIME TTY TIME CMD<br>各相关信息的意义：<br>UID 程序被该 UID 所拥有<br>PPID 则是其上级父程序的ID<br>C CPU 使用的资源百分比<br>STIME 系统启动时间</p>
-<h2 id="查看进程树"><a href="#查看进程树" class="headerlink" title="查看进程树"></a>查看进程树</h2><p>pstree  显示进程树，以父子进程的关系显示，查看统一个服务有启动了几个进程特别方便<br>-u 显示所属用户<br>-p 显示pid</p>
-<h2 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h2><p>杀死一个进程 kill -9 pid<br>杀死一组进程 killall 进程名 </p>
-<h1 id="端口查看命令"><a href="#端口查看命令" class="headerlink" title="端口查看命令"></a>端口查看命令</h1><h2 id="netstat-查看端口是否开放"><a href="#netstat-查看端口是否开放" class="headerlink" title="netstat   查看端口是否开放"></a>netstat   查看端口是否开放</h2><p>-a (all)显示所有选项，默认不显示LISTEN相关<br>-t (tcp)仅显示tcp相关选项<br>-u (udp)仅显示udp相关选项<br>-n 拒绝显示别名，能显示数字的全部转化成数字。<br>-l 仅列出有在 Listen (监听) 的服務状态<br>-p 显示建立相关链接的程序名<br>-r 显示路由信息，路由表<br>-e 显示扩展信息，例如uid等<br>-s 按各个协议进行统计<br>-c 每隔一个固定时间，执行该netstat命</p>
-<h2 id="telnet-探测端口是否可以访问到"><a href="#telnet-探测端口是否可以访问到" class="headerlink" title="telnet 探测端口是否可以访问到"></a>telnet 探测端口是否可以访问到</h2><p>telnet  ip port</p>
-<h1 id="查看系统资源"><a href="#查看系统资源" class="headerlink" title="查看系统资源"></a>查看系统资源</h1><h2 id="查看内存适用情况"><a href="#查看内存适用情况" class="headerlink" title="查看内存适用情况"></a>查看内存适用情况</h2><p>free -[b|k|m|g] </p>
-<h2 id="查看硬盘使用情况"><a href="#查看硬盘使用情况" class="headerlink" title="查看硬盘使用情况"></a>查看硬盘使用情况</h2><p>df -[b|k|m] </p>
+        <h1 id="oracle-常用查询"><a href="#oracle-常用查询" class="headerlink" title="oracle 常用查询"></a>oracle 常用查询</h1><h2 id="–-子查询-在个别字段需要特殊处理的时候，这种子查询用起来特别好"><a href="#–-子查询-在个别字段需要特殊处理的时候，这种子查询用起来特别好" class="headerlink" title="– 子查询 ,在个别字段需要特殊处理的时候，这种子查询用起来特别好"></a>– 子查询 ,在个别字段需要特殊处理的时候，这种子查询用起来特别好</h2><p> select a.*,<br>        (select max(b.request_attachment_id)<br>           from tlb_request_to_attachment b<br>          where b.p_attachment_id = a.attachment_id)<br>   from tc_attachment a</p>
+<h2 id="–-decode-与-case-when"><a href="#–-decode-与-case-when" class="headerlink" title="– decode 与 case  when"></a>– decode 与 case  when</h2><a id="more"></a>
+<p>–   可以用在 三表关联<br>– 可以看成都是对值进行编码,都只是单列处理,不同的是，case when 可以跟子查询，而decode 不能 ，因为decode 是函数</p>
+<p>SELECT  A.* ,DECODE (A.TLB_TYPE ,’1’,B.NAME ,’2’,C.NAME,NULL) FROM TLB_CARS_LIST_DETAIL   A<br>LEFT JOIN TLB_REQUEST_PERSONAL B  ON  A.TLB_ID = B.TLB_ID<br>LEFT JOIN TLB_REQUEST_BIG_CUSTOMER C  ON A.TLB_ID = C.TLB_ID </p>
+<p>SELECT CASE UNION_ID WHEN ‘700’ THEN ‘1’ WHEN ‘710’ THEN (SELECT PERSON_ID  FROM   TB_CFS_AUDITGROUP_PERSON_UNION  U  WHERE U.UNION_ID = A.UNION_ID   )   ELSE ‘3’ END  FROM TB_CFS_AUDITGROUP_PERSON_UNION  A </p>
+<h2 id="–-两表关联查询-存在不存在"><a href="#–-两表关联查询-存在不存在" class="headerlink" title="– 两表关联查询  存在不存在"></a>– 两表关联查询  存在不存在</h2><p>SELECT A.*,CASE  when B.PERSON_ID IS NULL THEN ‘0’  ELSE  ‘1’  END  IS_IN   FROM  TB_CFS_AUDIT_GROUP_PERSON  A  LEFT JOIN  TB_CFS_AUDITGROUP_PERSON_UNION  B  ON ( A.PERSON_ID=B.PERSON_ID<br>AND  GROUP_ID =211 )</p>
+<p>SELECT A.*,CASE  when A.PERSON_ID = ANY (SELECT PERSON_ID FROM TB_CFS_AUDITGROUP_PERSON_UNION U WHERE U.GROUP_ID =B.GROUP_ID )   THEN ‘0’  ELSE  ‘1’  END  IS_IN   FROM  TB_CFS_AUDIT_GROUP_PERSON  A  LEFT JOIN  TB_CFS_AUDITGROUP_PERSON_UNION  B  ON ( A.PERSON_ID=B.PERSON_ID<br>AND  GROUP_ID =211 )</p>
+<h2 id="–-自连接-去重-或是-exist"><a href="#–-自连接-去重-或是-exist" class="headerlink" title="– 自连接 去重 或是 exist"></a>– 自连接 去重 或是 exist</h2><p>– 查找只有单条记录无对应的下一步记录，第二种是自连接实现的剔除，有点low</p>
+<p>select *<br>  from tba_agent_bail_detail a<br> where not exists<br> (select 1<br>          from tba_agent_bail_detail<br>         where a.business_id = business_id<br>           and a.business_type = business_type<br>           and a.bail_detail_id != bail_detail_id<br>           and a.bail_type = bail_type<br>           and a.bail_amount = bail_amount)<br>   and a.bail_type in (‘3’, ‘4’)<br>   and a.bail_flag = ‘1’<br>   and business_type in<br>       (‘TLB_REQUEST_PERSONAL’, ‘TLB_REQUEST_BIG_CUSTOMER’);</p>
+<p>select *<br>  from (select a.bail_detail_id,<br>               a.business_type,<br>               a.business_id,<br>               a.bail_type,<br>               a.bail_flag,<br>               a.bail_amount,<br>               a.agent_id,<br>               a.remark,<br>               to_char(a.create_date, ‘yyyy-mm-dd’) create_date,<br>               (case<br>                 when a.bail_type = 3 then<br>                  b.GPS_DEPOSIT_LEVERAGE<br>                 else<br>                  b.ACCESS_DEPOSIT_LEVERAGE<br>               end) AS “DEPOSIT_LEVERAGE”,<br>               c.agent_name,<br>               d.user_name,<br>               d.tlb_code,<br>               d.contract_number,<br>               to_char(d.apply_final_time, ‘yyyy-mm-dd’) apply_final_time,<br>               to_char(d.apply_down_time, ‘yyyy-mm-dd’) apply_down_time,<br>               d.vehicle_category,<br>               d.APPLY_STATUES<br>          from tba_agent_bail_detail a<br>          left join tba_agent_bail b on b.agent_id = a.agent_id<br>          left join tdl_agent_apply c on c.agent_id = a.agent_id<br>          left join TLB_REQUEST_PERSONAL d on d.tlb_id = a.business_id<br>         where a.business_type = ‘TLB_REQUEST_PERSONAL’<br>           and a.bail_flag in (‘1’, ‘2’)<br>        union all<br>        select a.bail_detail_id,<br>               a.business_type,<br>               a.business_id,<br>               a.bail_type,<br>               a.bail_flag,<br>               a.bail_amount,<br>               a.agent_id,<br>               a.remark,<br>               to_char(a.create_date, ‘yyyy-mm-dd’) create_date,<br>               (case<br>                 when a.bail_type = 3 then<br>                  b.GPS_DEPOSIT_LEVERAGE<br>                 else<br>                  b.ACCESS_DEPOSIT_LEVERAGE<br>               end) as “DEPOSIT_LEVERAGE”,<br>               c.agent_name,<br>               d.name as user_name,<br>               d.tlb_code,<br>               d.contract_number,<br>               to_char(d.apply_final_time, ‘yyyy-mm-dd’) apply_final_time,<br>               to_char(d.apply_down_time, ‘yyyy-mm-dd’) apply_down_time,<br>               d.vehicle_category,<br>               d.APPLY_STATUES<br>          from tba_agent_bail_detail a<br>          left join tba_agent_bail b on b.agent_id = a.agent_id<br>          left join tdl_agent_apply c on c.agent_id = a.agent_id<br>          left join TLB_REQUEST_BIG_CUSTOMER d on d.tlb_id = a.business_id<br>         where a.business_type = ‘TLB_REQUEST_BIG_CUSTOMER’<br>           and a.bail_flag in (‘1’, ‘2’)) t<br> where to_number(trim(t.APPLY_STATUES)) &gt;= 419<br>   AND bail_detail_id NOT IN<br>       (SELECT A.BAIL_DETAIL_ID<br>          FROM TBA_AGENT_BAIL_DETAIL A<br>          JOIN TBA_AGENT_BAIL_DETAIL B ON A.BUSINESS_ID = B.BUSINESS_ID<br>                                      AND A.BUSINESS_TYPE = B.BUSINESS_TYPE<br>                                      AND A.BAIL_TYPE = B.BAIL_TYPE<br>                                      AND A.BAIL_AMOUNT = B.BAIL_AMOUNT<br>                                      AND A.BAIL_DETAIL_ID &lt;&gt;<br>                                          B.BAIL_DETAIL_ID<br>                                      AND A.BAIL_FLAG = ‘1’)<br>   AND AGENT_ID = 1533<br>   AND BAIL_FLAG = ‘1’<br> order by business_type, to_number(business_id), bail_flag, bail_amount</p>
+<h2 id="–-树"><a href="#–-树" class="headerlink" title="– 树"></a>– 树</h2><ul>
+<li>– 查询父节点  根据子节点查找父节点<br>select *<br>from tb_value_list_details<br>start with (  details_id = ‘1361’ )<br>connect by prior   p_father_id=  details_id</li>
+</ul>
+<ul>
+<li><p>– 查询子节点 根据父节点查找子节点 </p>
+<p>select *<br>from tb_value_list_details<br>start with ( details_id = ‘1361’ )<br>connect by    p_father_id=  prior details_id</p>
+</li>
+</ul>
+<h2 id="–-拼接字符串-成为一列"><a href="#–-拼接字符串-成为一列" class="headerlink" title="– 拼接字符串 成为一列"></a>– 拼接字符串 成为一列</h2><p>类似于行转列 ,两个函数都有字符数限制,但listagg还可以实现排序 拼接<br>SELECT REPLACE(listagg(TAG_NAME, ‘,’) within<br>                          group(order by to_number(tag_up_id)),<br>                          ‘,’,<br>                          ‘&gt;’) AS TAG_NAME<br>             FROM TCM_TAG  a<br>            where tag_level &gt; 1<br>            START WITH TAG_ID = ‘52’<br>           CONNECT BY PRIOR TAG_UP_ID = TAG_ID</p>
+<p>SELECT REPLACE(wm_concat(TAG_NAME)<br>      ‘,’,<br>      ‘&gt;’) AS TAG_NAME<br>FROM TCM_TAG a<br>where tag_level &gt; 1<br>START WITH TAG_ID = ‘52’<br>CONNECT BY PRIOR TAG_UP_ID = TAG_ID</p>
+<h2 id="–查询被锁对象和解锁"><a href="#–查询被锁对象和解锁" class="headerlink" title="–查询被锁对象和解锁"></a>–查询被锁对象和解锁</h2><p>select object_name,machine,s.sid,s.serial#,L.OS_USER_NAME<br>from v$locked_object l,dba_objects o ,v$session s<br>where l.object_id　=　o.object_id and l.session_id=s.sid;</p>
+<p>解锁<br>alter system kill session ‘sid,serial#’</p>
+<h2 id="–-动态sql拼接，就是相当于单引号内-两个单引号表示一个单引号"><a href="#–-动态sql拼接，就是相当于单引号内-两个单引号表示一个单引号" class="headerlink" title="– 动态sql拼接，就是相当于单引号内 两个单引号表示一个单引号"></a>– 动态sql拼接，就是相当于单引号内 两个单引号表示一个单引号</h2><p>1 字符串拼接<br>declare<br>v_count number default 0;<br>v_id varchar(36);<br>v_sql varchar(1000);<br>begin</p>
+<p>dbms_output.put_line(‘测试 sql  in  不能接受多值的情况’);<br>v_id :=’’’7797’’,’’1109’’’;<br>v_id :=’’’7797’’,’’10000’’’;<br>dbms_output.put_line(‘v_id: ‘||v_id);<br>v_sql :=’ select count(1)  from  tc_attachment where attachment_id in (‘||v_id||’)’;<br>execute immediate  v_sql into v_count/<em> using v_id</em>/; –<br>dbms_output.put_line(‘v_count: ‘||v_count||’—-‘||v_sql);</p>
+<p>end;</p>
+<p>2 函数实现<br>使用 ASCII 编码，单引号 ‘ 的编码是39，所以拼接字符串可以这样写<br>str := ‘select * from user where name=’||chr(39)||zhangsan||chr(39)||’ order by id’;  </p>
+<h2 id="oracle-in-查询需要注意"><a href="#oracle-in-查询需要注意" class="headerlink" title="oracle in 查询需要注意"></a>oracle in 查询需要注意</h2><ul>
+<li>– 存在<br>select 1 from dual where 1   in (1,null)</li>
+</ul>
+<ul>
+<li>– 不存在  ,查询结果为空<br>select 1 from dual where 1     not in   (2,null)</li>
+</ul>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>1 – 为空时设置默认值<br> select  nvl(‘ddd’,11)  from dual </p>
+<p>2 – 为值编码或转义<br> select decode(1,2,22) from dual </p>
+<p>3 – 统计<br> count<br>4 – 求和<br> sum </p>
+<p>5 – 分组<br> group by </p>
+<p>6 – 字符串转换函数<br> to_char<br> select to_char(sysdate,’yyyy”-“mm-dd HH24”时”:mi:ss’)  from dual<br>7 – 时间转换函数<br> to_date<br> select to_date (‘2017-09-01’,’yyyy-mm-dd’)  from dual </p>
+<p>8 – 差集 从集合去掉完全一样的<br> minus<br> (select from ) minus (select from ) </p>
+<p>9 取并集 union all</p>
+<p>10 – 去重，对比结果的所有字段<br> distinct               </p>
+<h1 id="给列取别名"><a href="#给列取别名" class="headerlink" title="给列取别名"></a>给列取别名</h1><ul>
+<li>– oracle 不区分大小写<br>select 33  as ee  from  dual<br>select 33  as ee  from  dual<br>select 33  “from” from dual </li>
+</ul>
+<ul>
+<li>–# Mysql 默认区分大小写，可以配置为不区分<br>select  11 LOW from dual<br>select  11 low from dual<br>select 11 <code>from</code> from dual  </li>
+</ul>
 
       
     </div>
@@ -440,7 +480,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
+            <a href="/tags/oracle/" rel="tag"># oracle</a>
           
         </div>
       
@@ -453,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/04/linux操作文件/" rel="next" title="linux操作文件">
-                <i class="fa fa-chevron-left"></i> linux操作文件
+              <a href="/2018/01/10/错误集/" rel="next" title="错误集">
+                <i class="fa fa-chevron-left"></i> 错误集
               </a>
             
           </div>
@@ -462,10 +502,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/08/初学gradle项目/" rel="prev" title="初学用gradle搭建springboot项目">
-                初学用gradle搭建springboot项目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -633,7 +669,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程常用命令"><span class="nav-number">1.</span> <span class="nav-text">进程常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看进程"><span class="nav-number">1.1.</span> <span class="nav-text">查看进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看进程树"><span class="nav-number">1.2.</span> <span class="nav-text">查看进程树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杀死进程"><span class="nav-number">1.3.</span> <span class="nav-text">杀死进程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#端口查看命令"><span class="nav-number">2.</span> <span class="nav-text">端口查看命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#netstat-查看端口是否开放"><span class="nav-number">2.1.</span> <span class="nav-text">netstat   查看端口是否开放</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#telnet-探测端口是否可以访问到"><span class="nav-number">2.2.</span> <span class="nav-text">telnet 探测端口是否可以访问到</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看系统资源"><span class="nav-number">3.</span> <span class="nav-text">查看系统资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看内存适用情况"><span class="nav-number">3.1.</span> <span class="nav-text">查看内存适用情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看硬盘使用情况"><span class="nav-number">3.2.</span> <span class="nav-text">查看硬盘使用情况</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#oracle-常用查询"><span class="nav-number">1.</span> <span class="nav-text">oracle 常用查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#–-子查询-在个别字段需要特殊处理的时候，这种子查询用起来特别好"><span class="nav-number">1.1.</span> <span class="nav-text">– 子查询 ,在个别字段需要特殊处理的时候，这种子查询用起来特别好</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#–-decode-与-case-when"><span class="nav-number">1.2.</span> <span class="nav-text">– decode 与 case  when</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#–-两表关联查询-存在不存在"><span class="nav-number">1.3.</span> <span class="nav-text">– 两表关联查询  存在不存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#–-自连接-去重-或是-exist"><span class="nav-number">1.4.</span> <span class="nav-text">– 自连接 去重 或是 exist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#–-树"><span class="nav-number">1.5.</span> <span class="nav-text">– 树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#–-拼接字符串-成为一列"><span class="nav-number">1.6.</span> <span class="nav-text">– 拼接字符串 成为一列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#–查询被锁对象和解锁"><span class="nav-number">1.7.</span> <span class="nav-text">–查询被锁对象和解锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#–-动态sql拼接，就是相当于单引号内-两个单引号表示一个单引号"><span class="nav-number">1.8.</span> <span class="nav-text">– 动态sql拼接，就是相当于单引号内 两个单引号表示一个单引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#oracle-in-查询需要注意"><span class="nav-number">1.9.</span> <span class="nav-text">oracle in 查询需要注意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#给列取别名"><span class="nav-number">3.</span> <span class="nav-text">给列取别名</span></a></li></ol></div>
             
 
           </div>
