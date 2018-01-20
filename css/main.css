@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff28;
+  background: #06d1ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2589,7 +2589,7 @@ pre .javascript .function {
 .header {
   position: relative;
   margin: 0 auto;
-  width: 80%;
+  width: 75%;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .header {
@@ -2649,7 +2649,7 @@ pre .javascript .function {
   }
 }
 .container .main-inner {
-  width: 80%;
+  width: 75%;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .container .main-inner {
@@ -2690,7 +2690,7 @@ pre .javascript .function {
   position: static;
   float: left;
   margin-top: 300px;
-  width: 20px;
+  width: 240px;
   background: #eee;
   box-shadow: none;
 }
@@ -2708,7 +2708,7 @@ pre .javascript .function {
   display: none;
 }
 .footer-inner {
-  width: 80%;
+  width: 75%;
   padding-left: 260px;
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2802,21 +2802,6 @@ pre .javascript .function {
 .menu-item-active a {
   background: #f9f9f9;
   border-bottom-color: #fff;
-}
-.menu .menu-item .badge {
-  display: inline-block;
-  padding: 2px 5px;
-  font-weight: 700;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  background-color: #ccc;
-  border-radius: 10px;
-  float: right;
-  margin: 0.35em 0.9em 0 0;
-  text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
 }
 .menu .menu-item br {
   display: none;
