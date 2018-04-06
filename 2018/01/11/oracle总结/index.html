@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="悦夏">
 <meta property="og:description" content="oracle 常用查询– 子查询 ,在个别字段需要特殊处理的时候，这种子查询用起来特别好 select a.*,        (select max(b.request_attachment_id)           from tlb_request_to_attachment b          where b.p_attachment_id = a.attachment_id)   fr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-11T12:16:31.416Z">
+<meta property="og:updated_time" content="2018-02-23T08:46:01.340Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oracle sql 总结">
 <meta name="twitter:description" content="oracle 常用查询– 子查询 ,在个别字段需要特殊处理的时候，这种子查询用起来特别好 select a.*,        (select max(b.request_attachment_id)           from tlb_request_to_attachment b          where b.p_attachment_id = a.attachment_id)   fr">
@@ -349,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -380,7 +380,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,143
+                  1,204
                 </span>
               
 
@@ -422,6 +422,8 @@
 <p>–   可以用在 三表关联<br>– 可以看成都是对值进行编码,都只是单列处理,不同的是，case when 可以跟子查询，而decode 不能 ，因为decode 是函数</p>
 <p>SELECT  A.* ,DECODE (A.TLB_TYPE ,’1’,B.NAME ,’2’,C.NAME,NULL) FROM TLB_CARS_LIST_DETAIL   A<br>LEFT JOIN TLB_REQUEST_PERSONAL B  ON  A.TLB_ID = B.TLB_ID<br>LEFT JOIN TLB_REQUEST_BIG_CUSTOMER C  ON A.TLB_ID = C.TLB_ID </p>
 <p>SELECT CASE UNION_ID WHEN ‘700’ THEN ‘1’ WHEN ‘710’ THEN (SELECT PERSON_ID  FROM   TB_CFS_AUDITGROUP_PERSON_UNION  U  WHERE U.UNION_ID = A.UNION_ID   )   ELSE ‘3’ END  FROM TB_CFS_AUDITGROUP_PERSON_UNION  A </p>
+<p>修正 decode 后面可以跟子查询，不过要求结果是单条记录</p>
+<p>SELECT  A.* ,DECODE ((SELECT TLB_TYPE FROM TLB_CARS_LIST_DETAIL WHERE  CAR_LIST_ID = A.CAR_LIST_ID)  ,’1’,B.USER_NAME ,’2’,C.NAME,NULL) FROM TLB_CARS_LIST_DETAIL   A<br>LEFT JOIN TLB_REQUEST_PERSONAL B  ON  A.TLB_ID = B.TLB_ID<br>LEFT JOIN TLB_REQUEST_BIG_CUSTOMER C  ON A.TLB_ID = C.TLB_ID </p>
 <h2 id="–-两表关联查询-存在不存在"><a href="#–-两表关联查询-存在不存在" class="headerlink" title="– 两表关联查询  存在不存在"></a>– 两表关联查询  存在不存在</h2><p>SELECT A.*,CASE  when B.PERSON_ID IS NULL THEN ‘0’  ELSE  ‘1’  END  IS_IN   FROM  TB_CFS_AUDIT_GROUP_PERSON  A  LEFT JOIN  TB_CFS_AUDITGROUP_PERSON_UNION  B  ON ( A.PERSON_ID=B.PERSON_ID<br>AND  GROUP_ID =211 )</p>
 <p>SELECT A.*,CASE  when A.PERSON_ID = ANY (SELECT PERSON_ID FROM TB_CFS_AUDITGROUP_PERSON_UNION U WHERE U.GROUP_ID =B.GROUP_ID )   THEN ‘0’  ELSE  ‘1’  END  IS_IN   FROM  TB_CFS_AUDIT_GROUP_PERSON  A  LEFT JOIN  TB_CFS_AUDITGROUP_PERSON_UNION  B  ON ( A.PERSON_ID=B.PERSON_ID<br>AND  GROUP_ID =211 )</p>
 <h2 id="–-自连接-去重-或是-exist"><a href="#–-自连接-去重-或是-exist" class="headerlink" title="– 自连接 去重 或是 exist"></a>– 自连接 去重 或是 exist</h2><p>– 查找只有单条记录无对应的下一步记录，第二种是自连接实现的剔除，有点low</p>
@@ -586,7 +588,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -597,7 +599,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -608,7 +610,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -707,7 +709,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">6.7k</span>
+    <span title="Site words total count">11.1k</span>
   
 </div>
 
